@@ -5,23 +5,28 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        int[] estoque = new int[10];
-        int criticos = 0;
 
+        int[] estoque = new int[10];
+        int contadorCriticos = 0;
+
+        // Lendo o estoque de 10 produtos
         for (int i = 0; i < 10; i++) {
-            System.out.print("Digite o estoque do produto " + (i + 1) + ": ");
+            System.out.print("Quantidade em estoque do produto " + (i + 1) + ": ");
             estoque[i] = scanner.nextInt();
+
+            // Se for menor que 5, conta como crítico
             if (estoque[i] < 5) {
-                criticos++;
+                contadorCriticos++;
             }
         }
 
-        System.out.println("\n--- PRODUTOS EM ESTOQUE CRÍTICO (< 5 unidades) ---");
-        System.out.println("Total de produtos críticos: " + criticos);
+        System.out.println("\nQuantidade de produtos com estoque crítico: " + contadorCriticos);
+        System.out.println("Posições (índices) dos produtos críticos:");
 
+        // Loop para mostrar as posições de quem tem menos de 5 unidades
         for (int i = 0; i < 10; i++) {
             if (estoque[i] < 5) {
-                System.out.println("Produto na Posição [Vetor índice " + i + "] -> Estoque: " + estoque[i]);
+                System.out.println("Produto no índice [" + i + "] tem apenas " + estoque[i] + " unidades.");
             }
         }
 
